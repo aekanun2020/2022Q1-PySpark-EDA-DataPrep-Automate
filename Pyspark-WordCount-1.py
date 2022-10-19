@@ -11,4 +11,4 @@ keyval_rdd = data_rdd.map(lambda x:
 spark = SparkSession(sc)
 hasattr(keyval_rdd, "toDF")
 
-keyval_rdd.toDF(['Alphabet','Count']).write.mode('overwrite').csv('gs://grizzy-lab/wordCountResult/')
+keyval_rdd.toDF(['Alphabet','Count']).write.mode('overwrite').csv('gs://19oct/wordCountResult/')

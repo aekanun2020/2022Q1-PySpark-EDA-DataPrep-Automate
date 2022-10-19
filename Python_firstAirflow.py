@@ -8,11 +8,11 @@ from airflow.providers.google.cloud.operators.dataproc import (
 from airflow.providers.google.cloud.sensors.dataproc import DataprocJobSensor
 from airflow.utils.dates import days_ago
 
-PROJECT_ID = "iot-class-feb2017"
+PROJECT_ID = "polar-cyclist-364308"
 CLUSTER_NAME =  "aekanun-wordcount-cluster"
 REGION = "us-central1"
 ZONE = "us-central1-a"
-PYSPARK_URI = "gs://us-central1-myfirstpipeline-38368ae5-bucket/Pyspark-WordCount-1.py"
+PYSPARK_URI = "gs://us-central1-myfirstpipeline-9f9cc53e-bucket/Pyspark-WordCount-1.py"
 
 YESTERDAY = datetime.datetime.now() - datetime.timedelta(days=1)
 
@@ -58,7 +58,7 @@ with models.DAG(
    }
 
    pyspark_task = DataprocSubmitJobOperator(
-       task_id="pyspark_task", job=PYSPARK_JOB, location=REGION, project_id=PROJECT_ID
+       task_id="pyspark_task", job=PYSPARK_JOB, region=REGION, project_id=PROJECT_ID
    )
 
    create_cluster >>  pyspark_task
