@@ -16,7 +16,7 @@ PROJECT_ID = "iot-class-feb2017"
 CLUSTER_NAME =  "aekanun-dataprocbq-cluster"
 REGION = "us-central1"
 ZONE = "us-central1-a"
-PYSPARK_URI = "gs://us-central1-aekanun-airflow-0fb3bf7a-bucket/loanStat-DataproctoBQ.py"
+PYSPARK_URI = "gs://us-central1-aekanun-prepare-2c352528-bucket/loanStat-DataproctoBQ.py"
 DATASET_NAME = "bde4_dataset"
 
 
@@ -64,7 +64,7 @@ with models.DAG(
    }
 
    pyspark_task = DataprocSubmitJobOperator(
-       task_id="pyspark_task", job=PYSPARK_JOB, location=REGION, project_id=PROJECT_ID
+       task_id="pyspark_task", job=PYSPARK_JOB, region=REGION, project_id=PROJECT_ID
    )
 
    create_dataset = BigQueryCreateEmptyDatasetOperator(
